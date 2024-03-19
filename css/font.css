@@ -1,0 +1,29 @@
+/* Noto Sans KR (korean) */
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: Light;
+    font-weight: 100;
+    src: url(../font/Ubuntu-Light.ttf) format('ttf'), url(../font/Ubuntu-Light.woff) format('woff');
+    unicode-range: U+0030-0039, U+0041-005A, U+0061-007A;
+}
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../font/Ubuntu-Regular.ttf) format('ttf'), url(../font/Ubuntu-Regular.woff) format('woff');
+    unicode-range: U+0030-0039, U+0041-005A, U+0061-007A;
+}
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: Medium;
+    font-weight: 500;
+    src: url(../font/Ubuntu-Medium.ttf) format('ttf'), url(../font/Ubuntu-Medium.woff) format('woff');
+    unicode-range: U+0030-0039, U+0041-005A, U+0061-007A;
+}
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: bold;
+    font-weight: 700;
+    src: url(../font/Ubuntu-Bold.ttf) format('ttf'), url(../font/Ubuntu-Bold.woff) format('woff');
+    unicode-range: U+0030-0039, U+0041-005A, U+0061-007A;
+}

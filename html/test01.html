@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>test 01</title>
+        <link rel="stylesheet" href="../css/reset.css" />
+        <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+        <style>
+            section {
+                position: relative;
+                width: 300px;
+                height: 300px;
+            }
+
+            /* :root => 웹 문서에서 공통으로 사용될 속성 변수에 선언 */
+            :root {
+                --rotate-icon: 0.5s;
+                --color-black: #333;
+            }
+
+            section > i {
+                position: absolute;
+                width: 100%;
+                height: 20%;
+                background-color: var(--color-black);
+                transition: all var(--rotate-icon);
+            }
+
+            section > i:nth-of-type(1) {
+                top: 0;
+                width: auto;
+                left: 0;
+                right: 0;
+                transition: all var(--rotate-icon), left calc(var(--rotate-icon) / 2) calc(var(--rotate-icon) / 2),
+                    right calc(var(--rotate-icon) / 2) calc(var(--rotate-icon) / 2),
+                    height calc(var(--rotate-icon) / 2) 0s;
+            }
+            section > i:nth-of-type(2) {
+                top: 40%;
+                transform-origin: bottom left;
+            }
+            section > i:nth-of-type(3) {
+                top: 80%;
+                left: auto;
+                right: 0;
+                transform-origin: bottom right;
+            }
+
+            section:hover > i:nth-of-type(1) {
+                left: 40%;
+                right: 40%;
+                height: 100%;
+                transition: all var(--rotate-icon), left calc(var(--rotate-icon) / 2) 0s,
+                    right calc(var(--rotate-icon) / 2) 0s,
+                    height calc(var(--rotate-icon) / 2) calc(var(--rotate-icon) / 2);
+            }
+            section:hover > i:nth-of-type(2) {
+                transform: rotate(45deg);
+                width: 70.5%;
+            }
+
+            section:hover > i:nth-of-type(3) {
+                top: 40%;
+                transform: rotate(-45deg);
+                width: 70.5%;
+            }
+        </style>
+    </head>
+    <script>
+        // $(document).ready(function () {});
+    </script>
+    <body>
+        <div class="wrap">
+            <section>
+                <i></i>
+                <i></i>
+                <i></i>
+            </section>
+        </div>
+    </body>
+</html>
