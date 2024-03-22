@@ -1,0 +1,234 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-primary);
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow-x: hidden;
+    word-break: break-all;
+    color: var(--color-light);
+}
+
+.wrap {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+header .wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+header .logo {
+    padding: 14px 0;
+    display: inline-block;
+}
+
+/* nav */
+nav {
+    background-color: var(--color-light);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 0px 8px 0px 30px;
+    border-radius: 50px;
+    margin-top: 22px;
+    position: relative;
+}
+nav > ul {
+    display: flex;
+    padding: 12px 0px;
+}
+nav > ul > li {
+    margin-right: 48px;
+}
+nav ul li a {
+    display: inline-block;
+    font-size: var(--font-size-sl);
+    line-height: 24px;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+nav ul li a:hover {
+    color: var(--color-point);
+}
+nav ul li a::after {
+    content: attr(title);
+    display: block;
+    font-weight: 500;
+    height: 0px;
+    visibility: hidden;
+}
+nav .menu:hover .btn .ico_menu {
+    background-position: -52px -6px;
+    transition: opacity 1s;
+    opacity: 1;
+}
+nav .sub_nav {
+    display: none;
+}
+nav .sub_nav li a {
+    color: var(--color-gray-6);
+}
+nav .sub_nav li a::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+nav .sub_nav li a em {
+    font-size: 12px;
+    line-height: 100%;
+    float: right;
+}
+nav:hover:has(li:hover .have_sub) {
+    border-radius: 20px;
+    height: 100px;
+    align-items: normal;
+}
+nav:hover ul li:hover a.have_sub + .sub_nav {
+    display: flex;
+    width: calc(100% - 38px);
+    border-top: 1px solid var(--color-primary);
+    padding-top: 10px;
+    position: absolute;
+    left: 30px;
+    bottom: 14px;
+}
+nav:hover ul li:hover a.have_sub + .sub_nav li::after {
+    display: inline-block;
+    content: '';
+    width: 1px;
+    height: 12px;
+    background-color: var(--color-gray-6);
+    margin: 0 50px;
+}
+nav:hover ul li:hover a.have_sub + .sub_nav li:last-child::after {
+    display: none;
+}
+.menu {
+    padding: 7px 0;
+}
+
+/* main */
+main {
+}
+
+main .slide {
+}
+main .slide .slide_box {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    user-select: none;
+}
+main .slide .slide_box .slide_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    transition: left 0.15s;
+}
+main .slide .slide_box .slide_item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+main .slide .slide_box .slide_item .txt {
+    position: absolute;
+    bottom: 15%;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-light);
+}
+main .slide .slide_box .slide_item .txt h1 {
+    font-size: var(--font-size-h1);
+    font-weight: 700;
+    line-height: 100%;
+}
+.slider_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: calc(50% - 16px);
+    width: 100%;
+}
+.slider_btn .wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+.slider_btn .wrap .slide_button {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    background-color: #cccc;
+    cursor: pointer;
+}
+
+.pagination_box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(15% + 30px);
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.pagination_box .slide_pagination {
+    display: flex;
+    gap: 30px;
+    justify-content: end;
+}
+.slide_pagination > li {
+    cursor: pointer;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-light);
+}
+.slide_pagination > li.active {
+    background-color: var(--color-point);
+    position: relative;
+}
+.slide_pagination > li.active::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-point);
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: -10px;
+    top: -10px;
+}
+
+/* section */
+section {
+}
