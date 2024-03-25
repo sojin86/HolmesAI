@@ -762,7 +762,50 @@
     height: 36px;
     background-repeat: no-repeat;
     vertical-align: top;
+    background-size: 1150px;
 }
 .ico_menu {
     background-position: -4px -6px;
+}
+.ico_data {
+    background-position: -6px -106px;
+}
+.ico_treatment {
+    background-position: -100px -104px;
+}
+.ico_care {
+    background-position: -194px -108px;
+}
+.ico_diagnosis {
+    background-position: -288px -106px;
+}
+.ico_logo {
+    background-image: url(../img/common/logo.png);
+    display: inline-block;
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    width: 68px;
+    height: 68px;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    background-size: 68px;
+    background-position: 0px 22px;
+}
+
+/* text */
+.main_txt {
+    text-align: center;
+}
+.main_txt h3 {
+    font-size: var(--font-size-h3);
+    font-weight: 700;
+}
+
+.sub_txt {
+    text-align: center;
+}
+.sub_txt p {
+    font-size: var(--font-size-sl);
+    line-height: 24px;
 }

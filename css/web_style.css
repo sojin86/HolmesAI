@@ -231,4 +231,133 @@ main .slide .slide_box .slide_item .txt h1 {
 
 /* section */
 section {
+    border: 1px solid palegoldenrod;
+    padding: 10% 0;
+}
+.section01 {
+    border: 1px solid plum;
+}
+.section01 .wrap .sub_txt {
+    margin-top: 30px;
+}
+.section01 .wrap .infinite_content {
+    position: relative;
+}
+.section01 .wrap .infinite_content .infinite_wrap {
+    display: flex;
+    margin: 0 20%;
+    margin-top: 95px;
+}
+.section01 .wrap .infinite_content .infinite_wrap .infinite_box {
+    width: 45%;
+    margin: 0 auto;
+}
+.section01 .wrap .infinite_content .infinite_wrap .infinite_box .infinite {
+    padding-top: 100%;
+    width: 100%;
+    height: 100%;
+    border-radius: 100% 60% 100% 100%;
+    transform: rotate(45deg);
+    margin: 0px;
+    background: #d1d5db;
+    position: relative;
+    transition: background 0.5s ease-out;
+}
+.section01 .wrap .infinite_content .infinite_wrap .infinite_box .infinite::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 100% 60% 100% 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+.section01 .wrap .infinite_content .infinite_wrap .infinite_box .infinite::after {
+    content: '';
+    width: 60%;
+    height: 60%;
+    border-radius: 100% 0% 100% 100%;
+    background-color: #1f2937;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.section01 .wrap .infinite_content .infinite_wrap .infinite_box:nth-child(2) .infinite {
+    transform: rotate(225deg);
+}
+.section01 .wrap .infinite_content .infinite_wrap:hover .infinite {
+    transition: all 2s;
+    background: linear-gradient(var(--rotate), #106ab7, #0c518d, #ff9050, #ff7866);
+    animation: spin 5.5s linear infinite;
+}
+.section01 .wrap .infinite_content .icon_wrap > div {
+    position: absolute;
+    width: 8%;
+    height: 30%;
+    background: #fff;
+    border-radius: 50%;
+}
+.section01 .wrap .infinite_content .icon_wrap .data {
+    top: -10px;
+    left: 30%;
+}
+.section01 .wrap .infinite_content .icon_wrap .treatment {
+    top: -10px;
+    right: 30%;
+}
+.section01 .wrap .infinite_content .icon_wrap .care {
+    bottom: -10px;
+    left: 30%;
+}
+.section01 .wrap .infinite_content .icon_wrap .diagnosis {
+    bottom: -10px;
+    right: 30%;
+}
+.section01 .wrap .infinite_content .icon_wrap .logoCenter {
+    position: absolute;
+    top: 50%;
+    transform: translate(-424%, -50%);
+}
+.section01 .wrap .infinite_content .icon_wrap div .icon_box {
+    width: 100%;
+    height: 100%;
+}
+.section01 .wrap .infinite_content .icon_wrap div .icon_box i {
+    background-image: url(../img/common/UI_icon.png);
+    display: inline-block;
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    width: 68px;
+    height: 68px;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    background-size: 2200px;
+}
+.section01 .wrap .infinite_content .icon_wrap div span {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    font-size: var(--font-size-sm);
+    margin-top: 10px;
+}
+.section01 .wrap .infinite_content .icon_wrap .care span,
+.section01 .wrap .infinite_content .icon_wrap .diagnosis span {
+    position: absolute;
+    top: -34px;
+}
+
+@keyframes spin {
+    0% {
+        --rotate: 0deg;
+    }
+    100% {
+        --rotate: 360deg;
+    }
+}
+@property --rotate {
+    syntax: '<angle>';
+    initial-value: 132deg;
+    inherits: false;
 }
