@@ -801,6 +801,14 @@
     font-size: var(--font-size-h3);
     font-weight: 700;
 }
+.main_txt h3 .tm_text {
+    margin-right: 3%;
+    font-style: italic;
+}
+
+.main_txt h3 .tm_text em {
+    font-size: var(--font-size-md);
+}
 
 .sub_txt {
     text-align: center;
@@ -808,4 +816,16 @@
 .sub_txt p {
     font-size: var(--font-size-sl);
     line-height: 24px;
+}
+
+.tm_text {
+    margin-right: 3%;
+    display: inline-block;
+    position: relative;
+}
+.tm_text em {
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    font-style: italic;
 }

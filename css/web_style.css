@@ -347,6 +347,30 @@ section {
     position: absolute;
     top: -34px;
 }
+.section01 .wrap .infinite_content .infinite_wrap:hover .icon_wrap .data {
+    background-color: var(--color-point);
+}
+.section01 .wrap .infinite_content .infinite_wrap:hover .icon_wrap .data .icon_box .ico_data {
+    background-position: -6px -200px;
+}
+.section01 .wrap .infinite_content .infinite_wrap:hover .icon_wrap .treatment {
+    background-color: var(--color-orange-2);
+}
+.section01 .wrap .infinite_content .infinite_wrap:hover .icon_wrap .treatment .icon_box .ico_treatment {
+    background-position: -100px -200px;
+}
+.section01 .wrap .infinite_content .infinite_wrap:hover .icon_wrap .care {
+    background-color: var(--color-orange-2);
+}
+.section01 .wrap .infinite_content .infinite_wrap:hover .icon_wrap .care .icon_box .ico_care {
+    background-position: -194px -200px;
+}
+.section01 .wrap .infinite_content .infinite_wrap:hover .icon_wrap .diagnosis {
+    background-color: var(--color-point);
+}
+.section01 .wrap .infinite_content .infinite_wrap:hover .icon_wrap .diagnosis .icon_box .ico_diagnosis {
+    background-position: -288px -200px;
+}
 
 @keyframes spin {
     0% {
