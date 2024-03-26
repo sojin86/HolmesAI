@@ -10,7 +10,7 @@ body {
     -ms-user-select: none;
     user-select: none;
     overflow-x: hidden;
-    word-break: break-all;
+    word-break: keep-all;
     color: var(--color-light);
 }
 
@@ -367,6 +367,17 @@ section {
 }
 .section01 .wrap .infinite_content .infinite_wrap:hover .icon_wrap .diagnosis .icon_box .ico_diagnosis {
     background-position: -288px -200px;
+}
+
+.section02 {
+    border: 1px solid peru;
+    background-image: url(../img/main/img_01.png);
+    background-repeat: no-repeat;
+    vertical-align: top;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    background-size: cover;
 }
 
 @keyframes spin {
