@@ -371,11 +371,12 @@ section {
 
 .section02 {
     border: 1px solid peru;
-    background-image: url(../img/main/img_01.png);
+    background-image: url(../img/main/img_04.png);
     background-repeat: no-repeat;
     vertical-align: top;
     object-fit: cover;
     background-size: cover;
+    position: relative;
 }
 .section02 .wrap .imgbox_wrap {
     margin-top: 65px;
