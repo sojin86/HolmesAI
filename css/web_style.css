@@ -234,6 +234,7 @@ section {
     border: 1px solid palegoldenrod;
     padding: 10% 0;
 }
+/* section01 */
 .section01 .wrap .sub_txt {
     margin-top: 30px;
 }
@@ -368,7 +369,7 @@ section {
 .section01 .wrap .infinite_content .infinite_wrap:hover .icon_wrap .diagnosis .icon_box .ico_diagnosis {
     background-position: -288px -200px;
 }
-
+/* section02 */
 .section02 {
     border: 1px solid peru;
     background-image: url(../img/main/img_04.png);
@@ -425,6 +426,14 @@ section {
 .section02 .wrap .imgbox_wrap .img_box .sub_text span .tm_text em {
     font-size: 12px;
 }
+/* section03 */
+.section03 .wrap .grid_table_01 {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 @keyframes spin {
     0% {
         --rotate: 0deg;
