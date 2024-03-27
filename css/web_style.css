@@ -374,12 +374,56 @@ section {
     background-image: url(../img/main/img_01.png);
     background-repeat: no-repeat;
     vertical-align: top;
-    width: 100vw;
-    height: 100vh;
     object-fit: cover;
     background-size: cover;
 }
-
+.section02 .wrap .imgbox_wrap {
+    margin-top: 65px;
+}
+.section02 .wrap .imgbox_wrap .img_box {
+    display: flex;
+    background-color: var(--color-primary);
+    border-radius: 999px;
+    height: 200px;
+}
+.section02 .wrap .imgbox_wrap .img_box:nth-child(n + 2) {
+    margin-top: 30px;
+}
+.section02 .wrap .imgbox_wrap .img_box:nth-child(2n) .sub_text {
+    text-align: right;
+    padding: 30px 40px 30px 40px;
+}
+.section02 .wrap .imgbox_wrap .img_box:nth-child(3) .sub_text {
+    padding: 50px 40px 50px 40px;
+}
+.section02 .wrap .imgbox_wrap .img_box .img {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 999px;
+}
+.section02 .wrap .imgbox_wrap .img_box .img img {
+    width: 100%;
+    transform: translateY(-100px) scale(1);
+}
+.section02 .wrap .imgbox_wrap .img_box .sub_text {
+    padding: 40px;
+    width: 100%;
+}
+.section02 .wrap .imgbox_wrap .img_box .sub_text p {
+    font-size: var(--font-size-md);
+    font-weight: 500;
+}
+.section02 .wrap .imgbox_wrap .img_box .sub_text span {
+    display: inline-block;
+    font-size: var(--font-size-sl);
+    margin-top: 10px;
+}
+.section02 .wrap .imgbox_wrap .img_box .sub_text span .tm_text {
+    margin-right: 4%;
+}
+.section02 .wrap .imgbox_wrap .img_box .sub_text span .tm_text em {
+    font-size: 12px;
+}
 @keyframes spin {
     0% {
         --rotate: 0deg;
