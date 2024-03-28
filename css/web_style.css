@@ -173,7 +173,6 @@ main .slider .item_wrap .item .txt h1 {
     font-size: 60px;
     font-weight: 700;
     line-height: 100%;
-    color: #fff;
 }
 
 main .slider .pagination_box {
@@ -192,16 +191,15 @@ main .slider .pagination_box .slide_pagination {
 }
 
 main .slider .pagination_box .slide_pagination li {
-    float: left;
-    color: #fff;
     padding: 15px;
-    background: green;
+    background: var(--color-light);
     cursor: pointer;
     margin-right: 2px;
+    border-radius: 999px;
 }
 
 main .slider .pagination_box .slide_pagination li.active {
-    background: blue;
+    background: var(--color-point);
 }
 main .slider .timer_box {
     position: absolute;
