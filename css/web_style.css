@@ -191,7 +191,7 @@ main .slider .pagination_box .slide_pagination {
 }
 
 main .slider .pagination_box .slide_pagination li {
-    padding: 15px;
+    padding: 10px;
     background: var(--color-light);
     cursor: pointer;
     margin-right: 2px;
