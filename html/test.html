@@ -1,244 +1,331 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>main</title>
+        <title>test ---</title>
+        <link rel="stylesheet" href="../css/reset.css" />
+        <link rel="stylesheet" href="../css/common.css" />
+        <script src="../js/jquery-3.7.1.min.js"></script>
         <style>
-            /* reset */
-            li {
-                list-style: none;
-            }
-            button {
-                border: none;
-            }
-            div,
-            ul,
-            li,
-            button {
-                margin: 0;
-                padding: 0;
-            }
-
-            #sliderWrap {
+            .slider {
+                width: 100%;
+                height: 100vh;
+                margin: 0 auto;
                 position: relative;
-                width: 300px;
-                height: 200px;
+            }
+            .slider .slider_arrow {
+                position: absolute;
+                top: 0;
+            }
+            .slider .item_wrap {
+                display: flex;
+                flex-wrap: nowrap;
                 overflow: hidden;
-            }
-
-            /* slide item */
-            #sliderWrap .slider {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-            }
-            #sliderWrap .slider li {
-                float: left;
-                position: relative;
-                top: 0;
-                left: 0;
-                height: 100%;
-            }
-            #sliderWrap .slider li .itemWrap {
-                width: 100%;
-                height: 100%;
-                text-align: center;
-            }
-
-            /* item background color */
-            #sliderWrap .slider li:nth-child(1) .itemWrap {
-                background-color: #ff8181;
-            }
-            #sliderWrap .slider li:nth-child(2) .itemWrap {
-                background-color: #fff281;
-            }
-            #sliderWrap .slider li:nth-child(3) .itemWrap {
-                background-color: #81d1ff;
-            }
-
-            /* button */
-            #sliderWrap .directionNav {
                 position: relative;
                 width: 100%;
+                height: 100vh;
+                user-select: none;
+            }
+            .slider .item_wrap .item {
+                display: inline-block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                left: 0px;
+                width: 100%;
                 height: 100%;
+                flex-shrink: 0;
             }
-            #sliderWrap .directionNav button {
+            .slider .item_wrap .item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .slider .item_wrap .item .txt {
                 position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 20px;
-                height: 20px;
-                font-size: 0;
-                background: none;
-                cursor: pointer;
+                bottom: 15%;
+                width: 100%;
+                max-width: 1300px;
+                margin: 0 auto;
+                padding-bottom: 30px;
             }
-            #sliderWrap .directionNav button::after {
+            .slider .item_wrap .item .txt h1 {
+                font-size: 60px;
+                font-weight: 700;
+                line-height: 100%;
+                color: #fff;
+            }
+
+            .item-ativo {
                 display: block;
-                content: '';
-                width: 100%;
-                height: 100%;
-                border-right: 3px solid #000;
-                border-top: 3px solid #000;
-                transform: rotate(45deg);
-                opacity: 0.6;
-            }
-            #sliderWrap .directionNav button#prev {
-                left: 20px;
-            }
-            #sliderWrap .directionNav button#prev::after {
-                transform: rotate(-135deg);
-            }
-            #sliderWrap .directionNav button#next {
-                right: 20px;
             }
 
-            /* pagination */
-            .dot {
+            .nav-left {
+                width: 100px;
+                height: 100px;
+                position: relative;
+                z-index: 1;
+                border: 1px solid red;
+            }
+
+            .nav-right {
+                width: 100px;
+                height: 100px;
+                position: relative;
+                z-index: 1;
+                border: 1px solid red;
+            }
+            .slider .pagination_box {
                 position: absolute;
-                bottom: 10px;
-                left: 50%;
-                transform: translateX(-50%);
+                left: 0;
+                right: 0;
+                bottom: calc(15% + 30px);
+                width: 100%;
+                max-width: 1300px;
+                margin: 0 auto;
             }
-            .dot li {
+            .slider .pagination_box .slide_pagination {
+                display: flex;
+                gap: 30px;
+                justify-content: end;
+            }
+
+            .slider .pagination_box .slide_pagination li {
                 float: left;
-                width: 10px;
-                height: 10px;
-                margin: 0 4px;
-                border-radius: 50px;
-                background: #000;
-                opacity: 0.3;
-                text-indent: -9999px;
+                color: #fff;
+                padding: 15px;
+                background: green;
                 cursor: pointer;
+                margin-right: 2px;
             }
-            .dot li.on {
-                opacity: 1;
+
+            .slider .pagination_box .slide_pagination li.active {
+                background: blue;
+            }
+            .timer_box {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: calc(15%);
+                width: 100%;
+                max-width: 1300px;
+                margin: 0 auto;
+                background-color: #ffffff50;
+                height: 4px;
+            }
+            .timer_box .slider_timer {
+                position: absolute;
+                z-index: 500;
+                top: 0;
+                left: 0;
+                background: #fff;
+                height: 4px;
             }
         </style>
     </head>
     <script>
-        window.onload = function () {
-            function initializeSlider() {
-                const slideWrapper = document.getElementById('sliderWrap');
-                const slider = document.querySelector('#sliderWrap .slider');
-                const slides = document.querySelectorAll('#sliderWrap .slider li');
-                const sliderWidth = slideWrapper.clientWidth;
-                const totalSlides = slides.length;
+        $(document).ready(function () {
+            var slider_quant = $('#slider .item').length; // item 개수
+            var quant = slider_quant - 1; // 시작한거처럼 -1
+            var tempoAutomatico = 8000; // 타이머
 
-                let slideIndex = 0;
-                let autoSlider;
+            // progress bar timer
+            function timer() {
+                $('.slider_timer').clearQueue().finish();
+                $('.slider_timer').animate({ width: '0' }, 0);
+                $('.slider_timer').animate({ width: '100%' }, tempoAutomatico);
+            }
 
-                // Set slide widths
-                slides.forEach(function (element) {
-                    element.style.width = sliderWidth + 'px';
-                });
-
-                slider.style.width = sliderWidth * totalSlides + 'px';
-
-                // Next, Prev, Pagination
-                const nextBtn = document.getElementById('next');
-                const prevBtn = document.getElementById('prev');
-                const dot = document.querySelector('.dot');
-                const allBtn = document.getElementById('btn');
-
-                function plusSlides(n) {
-                    showSlides(slideIndex + n);
-                }
-
-                function showSlides(n) {
-                    slideIndex = (n + totalSlides) % totalSlides;
-                    slider.style.left = -(sliderWidth * slideIndex) + 'px';
-                    pagination();
-                }
-
-                function currentSlides(n) {
-                    showSlides(n);
-                }
-
-                function pagination() {
-                    const dots = document.querySelectorAll('.dot li');
-                    dots.forEach(function (element) {
-                        element.classList.remove('on');
+            //  자동 화면 슬라이드
+            function automatic() {
+                timer();
+                var posicao = $('.item').index($('.item-ativo'));
+                if (posicao < quant) {
+                    // Se a  posição for menor, executa a parada
+                    var atual = $('.item').eq(posicao);
+                    $('.nav-li').eq(posicao).removeClass('active');
+                    atual.fadeOut(500, function () {
+                        atual.removeClass('item-ativo');
                     });
-                    dots[slideIndex].classList.add('on');
+
+                    posicao++;
+
+                    var atual2 = $('.item').eq(posicao);
+                    $('.nav-li').eq(posicao).addClass('active');
+                    atual2.fadeIn(400, function () {
+                        atual2.addClass('item-ativo');
+                    });
+                } else {
+                    var atual = $('.item').eq(posicao);
+                    $('.nav-li').eq(posicao).removeClass('active');
+                    atual.fadeOut(500, function () {
+                        atual.removeClass('item-ativo');
+                    });
+
+                    posicao = 0;
+
+                    var atual2 = $('.item').eq(posicao);
+                    $('.nav-li').eq(posicao).addClass('active');
+                    atual2.fadeIn(400, function () {
+                        atual2.addClass('item-ativo');
+                    });
+                }
+            }
+
+            // 처음부터 슬라이드 리셋
+            var tempoSlide = window.setInterval(automatic, tempoAutomatico);
+            function endAndStartTimer() {
+                window.clearTimeout(tempoSlide);
+                tempoSlide = window.setInterval(automatic, tempoAutomatico);
+            }
+
+            // 버튼 클릭 슬라이드 보이기
+            function navigation() {
+                for (var i = 1; i <= slider_quant; i++) {
+                    $('#navs').append("<li class='nav-li'>" + '</li>');
                 }
 
-                // Handle dot clicks
-                dot.addEventListener('click', function (event) {
-                    if (event.target.tagName === 'LI') {
-                        showSlides(Array.from(event.target.parentNode.children).indexOf(event.target));
+                $('.nav-li').on('click', function () {
+                    endAndStartTimer();
+                    timer();
+                    var posicao = $(this).index();
+                    $('.nav-li').removeClass('active');
+                    var atual = $('.item-ativo');
+                    atual.fadeOut(500, function () {
+                        atual.removeClass('item-ativo');
+                    });
+
+                    var atual2 = $('.item').eq(posicao);
+                    $(this).addClass('active');
+                    atual2.fadeIn(400, function () {
+                        atual2.addClass('item-ativo');
+                    });
+                });
+            }
+
+            function direction() {
+                var marcado = $('.item').index($('.item-ativo'));
+                $('.nav-li').eq(marcado).addClass('active');
+
+                var dirLeft = $('#nav-left');
+                var dirRight = $('#nav-right');
+
+                dirRight.on('click', function () {
+                    timer();
+                    endAndStartTimer();
+                    var posicao = $('.item').index($('.item-ativo'));
+                    if (posicao < quant) {
+                        // Se a  posição for menor, executa a parada
+                        var atual = $('.item').eq(posicao);
+                        $('.nav-li').eq(posicao).removeClass('active');
+                        atual.fadeOut(500, function () {
+                            atual.removeClass('item-ativo');
+                        });
+
+                        posicao++;
+
+                        var atual2 = $('.item').eq(posicao);
+                        $('.nav-li').eq(posicao).addClass('active');
+                        atual2.fadeIn(400, function () {
+                            atual2.addClass('item-ativo');
+                        });
+                    } else {
+                        var atual = $('.item').eq(posicao);
+                        $('.nav-li').eq(posicao).removeClass('active');
+                        atual.fadeOut(500, function () {
+                            atual.removeClass('item-ativo');
+                        });
+
+                        posicao = 0;
+
+                        var atual2 = $('.item').eq(posicao);
+                        $('.nav-li').eq(posicao).addClass('active');
+                        atual2.fadeIn(400, function () {
+                            atual2.addClass('item-ativo');
+                        });
                     }
                 });
 
-                // Handle button clicks
-                nextBtn.addEventListener('click', function () {
-                    plusSlides(1);
+                dirLeft.on('click', function () {
+                    timer();
+                    endAndStartTimer();
+                    var posicao = $('.item').index($('.item-ativo'));
+                    if (posicao > 0) {
+                        // Se a  posição for menor, executa a parada
+                        var atual = $('.item').eq(posicao);
+                        $('.nav-li').eq(posicao).removeClass('active');
+                        atual.fadeOut(500, function () {
+                            atual.removeClass('item-ativo');
+                        });
+
+                        posicao--;
+
+                        var atual2 = $('.item').eq(posicao);
+                        $('.nav-li').eq(posicao).addClass('active');
+                        atual2.fadeIn(400, function () {
+                            atual2.addClass('item-ativo');
+                        });
+                    } else {
+                        var atual = $('.item').eq(posicao);
+                        $('.nav-li').eq(posicao).removeClass('active');
+                        atual.fadeOut(500, function () {
+                            atual.removeClass('item-ativo');
+                        });
+
+                        posicao = quant;
+
+                        var atual2 = $('.item').eq(posicao);
+                        $('.nav-li').eq(posicao).addClass('active');
+                        atual2.fadeIn(400, function () {
+                            atual2.addClass('item-ativo');
+                        });
+                    }
                 });
-
-                prevBtn.addEventListener('click', function () {
-                    plusSlides(-1);
-                });
-
-                // Handle hover
-                const hoverElements = [allBtn, dot];
-
-                hoverElements.forEach(function (element) {
-                    element.addEventListener('mouseover', function () {
-                        this.classList.add('active');
-                        clearInterval(autoSlider);
-                    });
-
-                    element.addEventListener('mouseleave', function () {
-                        this.classList.remove('active');
-                        startAutoSlider();
-                    });
-                });
-
-                // Auto slider
-                function startAutoSlider() {
-                    autoSlider = setInterval(function () {
-                        plusSlides(1);
-                    }, 3000);
-                }
-
-                // Initialize auto slider
-                startAutoSlider();
             }
 
-            // 호출하여 슬라이더 초기화
-            initializeSlider();
-        };
+            timer();
+            navigation();
+            direction();
+        });
     </script>
     <body>
-        <div id="sliderWrap">
-            <ul class="slider">
-                <li>
-                    <div class="itemWrap">
-                        <img src="../img/main/main_01.jpg" alt="" />
-                    </div>
-                </li>
-                <li>
-                    <div class="itemWrap">
-                        <img src="../img/main/main_02.jpg" alt="" />
-                    </div>
-                </li>
-                <li>
-                    <div class="itemWrap">
-                        <img src="../img/main/main_03.jpg" alt="" />
-                    </div>
-                </li>
-            </ul>
-            <div id="btn" class="directionNav">
-                <button id="prev" class="btn">prev</button>
-                <button id="next" class="btn">next</button>
+        <div id="slider" class="slider">
+            <div class="slider_arrow">
+                <button id="nav-left" class="nav-left"><</button>
+                <button id="nav-right" class="nav-right">></button>
             </div>
-            <ul class="dot">
-                <li class="dots on">btn01</li>
-                <li class="dots">btn02</li>
-                <li class="dots">btn03</li>
+
+            <ul class="item_wrap">
+                <li class="item-ativo item">
+                    <img src="../img/main/img_01.jpg" alt="" />
+                    <div class="txt">
+                        <h1>Better Care!</h1>
+                    </div>
+                </li>
+                <li class="item">
+                    <img src="../img/main/img_02.jpg" alt="" />
+                    <div class="txt">
+                        <h1>Better Insights!</h1>
+                    </div>
+                </li>
+                <li class="item">
+                    <img src="../img/main/img_03.jpg" alt="" />
+                    <div class="txt">
+                        <h1>Better Treatment!</h1>
+                    </div>
+                </li>
             </ul>
+
+            <div class="pagination_box">
+                <ul id="navs" class="slide_pagination"></ul>
+            </div>
+
+            <div class="timer_box">
+                <div class="slider_timer"></div>
+            </div>
         </div>
     </body>
 </html>

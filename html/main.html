@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="../css/reset.css" />
         <link rel="stylesheet" href="../css/common.css" />
         <link rel="stylesheet" href="../css/web_style.css" />
+        <script src="../js/jquery-3.7.1.min.js"></script>
         <script src="../js/common.js"></script>
     </head>
     <body>
@@ -68,35 +69,34 @@
             </div>
         </header>
         <main>
-            <div class="slide slide_wrap">
-                <ul class="slide_box">
-                    <li class="slide_item item1">
+            <div id="slider" class="slider">
+                <ul class="item_wrap">
+                    <li class="item_active item">
                         <img src="../img/main/img_01.jpg" alt="" />
                         <div class="txt">
                             <h1>Better Care!</h1>
                         </div>
                     </li>
-                    <li class="slide_item item2">
+                    <li class="item">
                         <img src="../img/main/img_02.jpg" alt="" />
                         <div class="txt">
                             <h1>Better Insights!</h1>
                         </div>
                     </li>
-                    <li class="slide_item item3">
+                    <li class="item">
                         <img src="../img/main/img_03.jpg" alt="" />
                         <div class="txt">
                             <h1>Better Treatment!</h1>
                         </div>
                     </li>
                 </ul>
-                <div class="slider_btn">
-                    <div class="wrap">
-                        <button class="slide_prev_button slide_button">◀</button>
-                        <button class="slide_next_button slide_button">▶</button>
-                    </div>
-                </div>
+
                 <div class="pagination_box">
-                    <ul class="slide_pagination"></ul>
+                    <ul id="navs" class="slide_pagination"></ul>
+                </div>
+
+                <div class="timer_box">
+                    <div class="slider_timer"></div>
                 </div>
             </div>
         </main>
@@ -279,6 +279,30 @@
             </div>
         </section>
         <section class="section04">
+            <div class="wrap">
+                <div class="main_txt">
+                    <h3>
+                        <span class="tm_text">Wizzle <em>TM</em></span>
+                        has three unique solutions.
+                    </h3>
+                </div>
+                <div class="sub_txt">
+                    <p>
+                        HolmesAI harnesses its profound expertise in biomedical engineering, data analytics, and mobile
+                        and cloud software to develop technology that enhances decision-making paradigms, ultimately
+                        leading to improved health outcomes.
+                    </p>
+                </div>
+                <div class="imgbox_wrap">
+                    <div class="btns"></div>
+                    <div class="img"></div>
+                </div>
+            </div>
+        </section>
+        <section class="section05">
+            <div class="wrap"></div>
+        </section>
+        <section class="section06">
             <div class="wrap"></div>
         </section>
         <footer>

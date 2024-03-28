@@ -126,11 +126,16 @@ nav:hover ul li:hover a.have_sub + .sub_nav li:last-child::after {
 
 /* main */
 main {
+    border: 1px solid red;
+}
+main .slider {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    position: relative;
 }
 
-main .slide {
-}
-main .slide .slide_box {
+main .slider .item_wrap {
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
@@ -139,7 +144,8 @@ main .slide .slide_box {
     height: 100vh;
     user-select: none;
 }
-main .slide .slide_box .slide_item {
+main .slider .item_wrap .item {
+    display: inline-block;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -148,51 +154,29 @@ main .slide .slide_box .slide_item {
     width: 100%;
     height: 100%;
     flex-shrink: 0;
-    transition: left 0.15s;
 }
-main .slide .slide_box .slide_item img {
+
+main .slider .item_wrap .item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-main .slide .slide_box .slide_item .txt {
+main .slider .item_wrap .item .txt {
     position: absolute;
     bottom: 15%;
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
     padding-bottom: 30px;
-    border-bottom: 1px solid var(--color-light);
 }
-main .slide .slide_box .slide_item .txt h1 {
-    font-size: var(--font-size-h1);
+main .slider .item_wrap .item .txt h1 {
+    font-size: 60px;
     font-weight: 700;
     line-height: 100%;
-}
-.slider_btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: calc(50% - 16px);
-    width: 100%;
-}
-.slider_btn .wrap {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    max-width: 1600px;
-    margin: 0 auto;
-}
-.slider_btn .wrap .slide_button {
-    width: 32px;
-    height: 32px;
-    border-radius: 100%;
-    background-color: #cccc;
-    cursor: pointer;
+    color: #fff;
 }
 
-.pagination_box {
+main .slider .pagination_box {
     position: absolute;
     left: 0;
     right: 0;
@@ -201,32 +185,42 @@ main .slide .slide_box .slide_item .txt h1 {
     max-width: 1300px;
     margin: 0 auto;
 }
-.pagination_box .slide_pagination {
+main .slider .pagination_box .slide_pagination {
     display: flex;
     gap: 30px;
     justify-content: end;
 }
-.slide_pagination > li {
+
+main .slider .pagination_box .slide_pagination li {
+    float: left;
+    color: #fff;
+    padding: 15px;
+    background: green;
     cursor: pointer;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: var(--color-light);
+    margin-right: 2px;
 }
-.slide_pagination > li.active {
-    background-color: var(--color-point);
-    position: relative;
+
+main .slider .pagination_box .slide_pagination li.active {
+    background: blue;
 }
-.slide_pagination > li.active::after {
-    content: '';
-    width: 30px;
-    height: 30px;
-    border: 1px solid var(--color-point);
-    border-radius: 50%;
-    display: inline-block;
+main .slider .timer_box {
     position: absolute;
-    left: -10px;
-    top: -10px;
+    left: 0;
+    right: 0;
+    bottom: calc(15%);
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    background-color: #ffffff50;
+    height: 4px;
+}
+main .slider .timer_box .slider_timer {
+    position: absolute;
+    z-index: 500;
+    top: 0;
+    left: 0;
+    background: #fff;
+    height: 4px;
 }
 
 /* section */
@@ -235,9 +229,6 @@ section {
     padding: 10% 0;
 }
 /* section01 */
-.section01 .wrap .sub_txt {
-    margin-top: 30px;
-}
 .section01 .wrap .infinite_content {
     position: relative;
 }
@@ -432,6 +423,10 @@ section {
     display: flex;
     align-items: center;
     gap: 20px;
+}
+/* section04 */
+.section04 {
+    position: relative;
 }
 
 @keyframes spin {
