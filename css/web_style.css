@@ -422,6 +422,7 @@ section {
 /* section04 */
 .section04 {
     position: relative;
+    border: 1px solid papayawhip;
 }
 
 @keyframes spin {
